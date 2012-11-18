@@ -24,7 +24,7 @@ namespace CodeGeneration {
         }
 
         private static string CreateHeader(string type, List<int> sizes) {
-            string header = string.Format("{0} data ", type);
+            string header = string.Format("{0} data", type);
             foreach(int size in sizes) {
                 header += string.Format("[{0}]", size);
             }
@@ -36,12 +36,12 @@ namespace CodeGeneration {
             string content = "";
 
             if (index == sizes.Count - 1) {
-                content += "{ ";
+                //content += "{ ";
                 for(int i = 0; i < sizes[index]; i++) {
                     content += rand.Next(100) + ", ";
                 }
 
-                content += "},";
+                content = content.Substring(0, content.Length - 2);// + " },";
             } else {
                 for(int i = 0; i < sizes[index]; i++) {
                     content += "{\n";
@@ -52,7 +52,7 @@ namespace CodeGeneration {
                 }
             }
 
-            return content;
+            return content.Substring(0, content.Length - 1);
         }
 
         private static string Indent(int level) {
@@ -75,8 +75,7 @@ namespace CodeGeneration {
 
             foreach(string dimensionSize in dimPrepared.Split(']')) {
                 if(dimensionSize.Length > 0) {
-                    try {
-                        Console.WriteLine("Parsing: " + dimensionSize);
+                    try {                        
                         dimensionSizes.Add(int.Parse(dimensionSize));
                     } catch(Exception e) {
                         Console.WriteLine("Error: Dimension sizes must be numbers.");
