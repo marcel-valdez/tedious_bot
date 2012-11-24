@@ -1,0 +1,5 @@
+*.suo
+Watch/obj/
+Watch/bin/
+CArrayGenerator/obj/
+CArrayGenerator/bin/

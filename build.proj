@@ -1,21 +1,28 @@
 <Project DefaultTargets="Build;Deploy;" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == ''">Release</Configuration>
-    </PropertyGroup>    
+        <OutputPath>$(MSBuildProjectDirectory)</OutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <DeployFiles Include="CArrayGenerator.exe" />
+        <DeployFiles Include="watch.exe" />    
+    </ItemGroup>    
     <ItemGroup>
         <DeleteFiles Include="CArrayGenerator.exe" />
-        <CompileFiles Include="CArrayGenerator.cs" />
+        <DeleteFiles Include="watch.exe" />    
+        <DeleteFiles Include="CArrayGenerator.pdb" />        
+        <DeleteFiles Include="watch.pdb" />    
     </ItemGroup>
-    
-    <Target Name="Build">                
-        <Csc Sources="@(CompileFiles)"
-         OutputAssembly="CArrayGenerator.exe" />
+
+    <Target Name="Build">
+         <MSBuild Projects="CodeGeneration.sln" Properties="Configuration=$(Configuration);OutputPath=$(OutputPath)"/>
     </Target>
+
     <Target Name="Deploy">
         <Copy Condition="'$(Configuration)'=='Release'"
-              SourceFiles="CarrayGenerator.exe"
-              DestinationFolder="d:\static\tools\">
-        </Copy>
+              SourceFiles="@(DeployFiles)"
+              DestinationFolder="d:\static\tools\" />        
         <Delete Condition="'$(Configuration)'=='Release'" Files="@(DeleteFiles)" />
-    </Target>
+    </Target>    
 </Project>

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CArrayGenerator", "CArrayGenerator\CArrayGenerator.csproj", "{ECCC4F9C-63D3-4C8A-A7B0-6A73E16DC081}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watch", "Watch\Watch.csproj", "{07A6C445-9F7C-46FE-884C-0E199EEE8FC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ECCC4F9C-63D3-4C8A-A7B0-6A73E16DC081}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECCC4F9C-63D3-4C8A-A7B0-6A73E16DC081}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECCC4F9C-63D3-4C8A-A7B0-6A73E16DC081}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECCC4F9C-63D3-4C8A-A7B0-6A73E16DC081}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07A6C445-9F7C-46FE-884C-0E199EEE8FC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07A6C445-9F7C-46FE-884C-0E199EEE8FC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07A6C445-9F7C-46FE-884C-0E199EEE8FC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07A6C445-9F7C-46FE-884C-0E199EEE8FC2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
