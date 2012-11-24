@@ -6,13 +6,16 @@
 
     <ItemGroup>
         <DeployFiles Include="CArrayGenerator.exe" />
-        <DeployFiles Include="watch.exe" />    
-    </ItemGroup>    
+        <DeployFiles Include="watch.exe" />
+		<DeployFiles Include="formatter.exe" />
+	</ItemGroup>    
     <ItemGroup>
         <DeleteFiles Include="CArrayGenerator.exe" />
-        <DeleteFiles Include="watch.exe" />    
+        <DeleteFiles Include="watch.exe" />
+		<DeployFiles Include="formatter.exe" />
         <DeleteFiles Include="CArrayGenerator.pdb" />        
-        <DeleteFiles Include="watch.pdb" />    
+        <DeleteFiles Include="watch.pdb" />
+		<DeployFiles Include="formatter.pdb" />
     </ItemGroup>
 
     <Target Name="Build">

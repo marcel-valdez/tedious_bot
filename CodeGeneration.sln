@@ -8,8 +8,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5A4BAD39-F89E-4300-88A4-D94C6A57865A}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		build.bat = build.bat
+		build.proj = build.proj
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileFormatter", "FileFormatter\FileFormatter.csproj", "{3860A30D-20BA-4616-BE61-C74D15D26CF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +29,10 @@ Global
 		{07A6C445-9F7C-46FE-884C-0E199EEE8FC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07A6C445-9F7C-46FE-884C-0E199EEE8FC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07A6C445-9F7C-46FE-884C-0E199EEE8FC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3860A30D-20BA-4616-BE61-C74D15D26CF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3860A30D-20BA-4616-BE61-C74D15D26CF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3860A30D-20BA-4616-BE61-C74D15D26CF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3860A30D-20BA-4616-BE61-C74D15D26CF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,3 +3,7 @@ Watch/obj/
 Watch/bin/
 CArrayGenerator/obj/
 CArrayGenerator/bin/
+FileFormatter/obj/
+FileFormatter/bin/
+*.exe
+*.pdb
