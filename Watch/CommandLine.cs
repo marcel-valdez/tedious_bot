@@ -18,7 +18,7 @@ namespace CodeGeneration
         /// <returns>The text which is returned by the application, when the called application is closed or finished</returns>
         public static string Run(string fileName, string args)
         {
-            ProcessStartInfo info = getProcessStartInfo(fileName, args);
+            ProcessStartInfo info = GetProcessStartInfo(fileName, args);
             string returnvalue = string.Empty;
 
             using (Process process = Process.Start(info))
@@ -38,7 +38,7 @@ namespace CodeGeneration
         /// <returns></returns>
         public static string RunCmd(string command)
         {
-            ProcessStartInfo info = getProcessStartInfo("cmd", string.Empty);
+            ProcessStartInfo info = GetProcessStartInfo("cmd", string.Empty);
             //info.UseShellExecute = false;            
             string returnvalue = string.Empty;
             
@@ -54,14 +54,16 @@ namespace CodeGeneration
             return returnvalue;
         }
 
-        private static ProcessStartInfo getProcessStartInfo(string fileName, string args)
+        private static ProcessStartInfo GetProcessStartInfo(string fileName, string args)
         {
-            ProcessStartInfo info = new ProcessStartInfo(fileName);
-            info.UseShellExecute = false;
-            info.Arguments = args;
-            info.RedirectStandardInput = true;
-            info.RedirectStandardOutput = true;
-            info.CreateNoWindow = false;
+            var info = new ProcessStartInfo(fileName)
+                        {
+                            UseShellExecute = false,
+                            Arguments = args,
+                            RedirectStandardInput = true,
+                            RedirectStandardOutput = true,
+                            CreateNoWindow = false
+                        };
 
             return info;
         }

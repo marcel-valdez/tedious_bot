@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using System.IO;
-using System.Text;
+using System;
 
 namespace FishEyeService
 {
@@ -19,48 +19,53 @@ namespace FishEyeService
         /// <returns>The text which is returned by the application, when the called application is closed or finished</returns>
         public static void Run(string fileName, string args = "")
         {
-            ProcessStartInfo info = getProcessStartInfo(fileName, args);
+            ProcessStartInfo info = GetProcessStartInfo(fileName, args);
             RunProcess(info);
         }
 
         private static void RunProcess(ProcessStartInfo info)
-        {            
+        {
+            int maxLines = 1000, lineCount = 0;
             string prefix = Path.GetFileNameWithoutExtension(info.FileName);
-            FileStream serviceLog = CreateLogFile(prefix);
-
+            StreamWriter logWriter = CreateLogFile(prefix);
             using (Process process = Process.Start(info))
             using (StreamReader sr = process.StandardOutput)
             {
                 while (!sr.EndOfStream)
                 {
-                    byte[] bytes = Encoding.UTF8.GetBytes(sr.ReadLine());
-                    serviceLog.Write(bytes, 0, bytes.Length);
-                    if (serviceLog.Length > 5000)
+                    logWriter.Write(sr.ReadLine());
+                    logWriter.Flush();
+                    if (++lineCount > maxLines)
                     {
-                        serviceLog.Close();
-                        serviceLog = CreateLogFile(prefix);
+                        logWriter.BaseStream.SetLength(0);
                     }
                 }
             }
 
-            using (serviceLog) { }
+            using (logWriter)
+            {
+            }
         }
 
-        private static ProcessStartInfo getProcessStartInfo(string fileName, string args)
+        private static ProcessStartInfo GetProcessStartInfo(
+            string fileName,
+            string args)
         {
             return new ProcessStartInfo(fileName)
                         {
                             WindowStyle = ProcessWindowStyle.Hidden,
-                            UseShellExecute = false,
+                            UseShellExecute = true,
                             Arguments = args,
                             RedirectStandardOutput = true,
                             CreateNoWindow = true
                         };
         }
 
-        private static FileStream CreateLogFile(string prefix)
+        private static StreamWriter CreateLogFile(string prefix)
         {
-            return File.Create(prefix + "service.log", 5000, FileOptions.DeleteOnClose);
+            return File.CreateText(
+                String.Format(@"d:\atlassian\fisheye\fecru-2.9.2\{0}service.log",
+                              prefix));
         }
     }
 }

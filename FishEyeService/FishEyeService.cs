@@ -1,4 +1,5 @@
-﻿using System.ServiceProcess;
+﻿using System;
+using System.ServiceProcess;
 using System.Threading.Tasks;
 
 namespace FishEyeService
@@ -15,7 +16,10 @@ namespace FishEyeService
             // Call start.bat
             Task.Factory.StartNew(() =>
             {
-                CommandLine.Run("bin/start.bat");
+                CommandLine.Run(
+                    @"D:\atlassian\fisheye\fecru-2.9.2\bin\start.bat");
+                    //AppDomain.CurrentDomain.BaseDirectory + @"\bin\start.bat");
+
             });
         }
 
@@ -23,7 +27,8 @@ namespace FishEyeService
         {
             Task.Factory.StartNew(() =>
             {
-                CommandLine.Run("bin/stop.bat");
+                CommandLine.Run(
+                    @"d:\atlassian\fisheye\fecru-2.9.2\bin\stop.bat");
             });
         }
     }
